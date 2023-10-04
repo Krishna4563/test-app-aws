@@ -40,12 +40,10 @@ function App() {
         </div>
       </div>
 
-      <div className="desc-box">
-        <div className="description">
-          {data.weather ? (
-            <p className="desc-text">{data.weather[0].main}</p>
-          ) : null}
-        </div>
+      <div className="description">
+        {data.weather ? (
+          <p className="desc-text">{data.weather[0].main}</p>
+        ) : null}
       </div>
 
       {data.name !== undefined && (
