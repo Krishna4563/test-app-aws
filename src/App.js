@@ -5,15 +5,18 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=ea5afff881bb96ec71d2c441f9511e4d`;
-
   const searchLocation = (event) => {
     if (event.key === "Enter") {
-      axios.get(url).then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
-      setLocation("");
+      const trimmedLocation = location.trim(); // Remove leading/trailing spaces
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${trimmedLocation}&units=imperial&appid=ea5afff881bb96ec71d2c441f9511e4d`
+        )
+        .then((response) => {
+          setData(response.data);
+          console.log(response.data);
+        });
+      setLocation(""); // Clear the input field
     }
   };
 
